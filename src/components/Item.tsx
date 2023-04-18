@@ -69,22 +69,22 @@ function Item({ name, username, email, city, phone, website, id, item }: any) {
         ) : null}
       </div>
       <tr style={{ maxWidth: "100%", cursor: "pointer" }} key={id}>
-        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }}>
+        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }} onClick={() => handleNavigate(item!)}>
           {name}
         </td>
-        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }}>
+        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }} onClick={() => handleNavigate(item!)}>
           {username}
         </td>
-        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }}>
+        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }} onClick={() => handleNavigate(item!)}>
           {email}
         </td>
-        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }}>
+        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }} onClick={() => handleNavigate(item!)}>
           {city}
         </td>
-        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }}>
+        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }} onClick={() => handleNavigate(item!)}>
           {phone}
         </td>
-        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }}>
+        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }} onClick={() => handleNavigate(item!)}>
           {website}
         </td>
         <td>
