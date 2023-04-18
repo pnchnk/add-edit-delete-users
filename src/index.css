@@ -11,3 +11,54 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.deleteIcon { 
+  align-self:"center"; 
+  color:"red" !important;
+}
+
+.deleteIcon:hover {
+  cursor: pointer;
+  transition: ease 0.4s;
+  color: red;
+}
+
+.modalSubmit {
+  padding: 10px 15px;
+  background-color: #f6f5f3;
+  border-radius: 10px;
+  position: absolute;
+  top: 20%;
+  left:30%;
+  z-index: 10;
+}
+
+.form {
+  padding: 30px 40px;
+  border: 0.4px solid lightgray;
+  border-radius: 20px;
+}
+
+.form-button {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: #f6f5f3;
+  width: 100%;
+}
+
+.form-button:hover {
+  transition: ease 0.4s;
+  background-color: #e2e1dd;
+  cursor: pointer !important;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.product-nav-link:hover {
+  text-decoration: underline;
+}
