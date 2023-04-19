@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+//formik
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
-import { useAppDispatch } from "../store/hooks";
-//import { addToList } from "../store/slices/users";
+//post user
 import { useCreateUserMutation } from "../store/api/users";
 
 const validationSchema = Yup.object().shape({
@@ -29,12 +28,8 @@ const UserForm = () => {
     website: "",
   };
 
-  const dispatch = useAppDispatch();
-
-  const [showMessage, setShowMessage] = useState<boolean>(false);
-
-  const [createUser, { isLoading, isError, isSuccess }] =
-    useCreateUserMutation();
+  //get our function
+  const [createUser] = useCreateUserMutation();
 
   const handleSubmit = async (values: any) => {
     try {
@@ -235,7 +230,6 @@ const UserForm = () => {
           </div>
         )}
       </Formik>
-      {showMessage && <div className="modalSubmit">User added</div>}
     </>
   );
 };

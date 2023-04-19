@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
 //redux
 import { useAppSelector } from "../store/hooks";
 import { useGetAllUsersQuery } from "../store/api/users";
 import UserForm from "../components/UserForm";
 import Table from "../components/Table";
-import EditForm from "../components/EditForm";
 
 function HomePage() {
   useGetAllUsersQuery();
+
+  //redux state
   const users = useAppSelector(state => state.users.users);
-  console.log(users)
 
   const [modal, setModal] = useState<boolean>(false);
   

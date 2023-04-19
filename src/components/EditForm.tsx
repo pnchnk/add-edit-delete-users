@@ -1,10 +1,9 @@
-import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
+//redux
 import { useAppDispatch } from "../store/hooks";
 import { editUser } from "../store/slices/users";
-//import { addToList } from "../store/slices/users";
 import { useUpdateUserMutation } from "../store/api/users";
 
 const validationSchema = Yup.object().shape({
@@ -33,19 +32,16 @@ const EditForm = ({ id }: any) => {
 
   const dispatch = useAppDispatch();
 
-  const [showMessage, setShowMessage] = useState<boolean>(false);
-
-  const [updateUser, { isLoading, isError, isSuccess }] =
-    useUpdateUserMutation();
+  const [updateUser] = useUpdateUserMutation();
 
   const handleSubmit = async (values: any) => {
     try {
-      if(values.id > 1){
+      if (values.id > 1) {
         await updateUser(values);
       } else {
+        //if custom 
         dispatch(editUser(values));
       }
-      
     } catch (error) {
       console.log("error:", error);
     }
@@ -66,7 +62,16 @@ const EditForm = ({ id }: any) => {
               alignSelf: "center",
             }}
           >
-            <Form className="form" style={{ backgroundColor: "white", zIndex:3, position:"absolute", top:"10%", left:"40%" }}>
+            <Form
+              className="form"
+              style={{
+                backgroundColor: "white",
+                zIndex: 3,
+                position: "absolute",
+                top: "10%",
+                left: "40%",
+              }}
+            >
               <h3 style={{ textAlign: "center" }}>Edit user</h3>
               <div style={{ marginBottom: "20px" }}>
                 <label
@@ -233,7 +238,6 @@ const EditForm = ({ id }: any) => {
           </div>
         )}
       </Formik>
-      {showMessage && <div className="modalSubmit">User added</div>}
     </>
   );
 };

@@ -1,14 +1,17 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-// import { Product } from "../../types";
+
+//types
+import { User } from "../../types";
 
 export const productsApi = createApi({
   reducerPath: "usersApi",
   baseQuery: fetchBaseQuery({ baseUrl: "https://jsonplaceholder.typicode.com/" }),
   endpoints: (builder) => ({
-    getAllUsers: builder.query<any, void>({
+    getAllUsers: builder.query<User[], void>({
       query: () => `users`,
     }),
-    getUser: builder.query<any, number | string>({
+    //get one user
+    getUser: builder.query<User, number | string>({
       query: (id) => `users/${id}`,
     }),
     createUser: builder.mutation({
@@ -18,14 +21,14 @@ export const productsApi = createApi({
         body: user,
       }),
     }),
-    updateUser: builder.mutation<any, Partial<any>>({
+    updateUser: builder.mutation<User, Partial<any>>({
       query: (user) => ({
         url: `/users/${user.id}`,
         method: 'PUT',
         body: user,
       }),
     }),
-    deleteUser: builder.mutation<void, number>({
+    deleteUser: builder.mutation<User, number>({
       query: (id) => ({
         url: `/users/${id}`,
         method: 'DELETE',

@@ -9,13 +9,12 @@ import Item from "../components/Item";
 
 //fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSearch,
-  faCaretUp,
-  faCaretDown,
-} from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-function Table({ users }: any) {
+//types
+import { User, UserSlice } from "../types";
+
+function Table({ users }: UserSlice) {
   useEffect(() => {
     //set filteredData to render initial state
     setFilteredData(users);
@@ -31,7 +30,7 @@ function Table({ users }: any) {
     setSearchTerm(value);
 
     const filteredItems = users?.filter(
-      (item: any) =>
+      (item: User) =>
         item.name.toLowerCase().includes(value.toLowerCase()) ||
         item.username?.toLowerCase().includes(value.toLowerCase())
     );

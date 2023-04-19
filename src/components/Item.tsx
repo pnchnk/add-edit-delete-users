@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 //import { Product } from "../types";
 import EditForm from "./EditForm";
@@ -17,19 +17,14 @@ import { removeUser } from "../store/slices/users";
 //import { removeFromList } from "../store/slices/users";
 
 function Item({ name, username, email, city, phone, website, id, item }: any) {
-  const [deleteUser, { isLoading, isError, isSuccess }] =
-    useDeleteUserMutation();
+  const [deleteUser] = useDeleteUserMutation();
   const [modal, setModal] = useState<boolean>(false);
   //navigation
   const navigate = useNavigate();
 
   //navigation func, passing item into nav props
   const handleNavigate = (item: any) => {
-    navigate(`/${item.id}`, {
-      state: {
-        item,
-      },
-    });
+    navigate(`/users/${item.id}`);
   };
 
   //redux actions
@@ -38,6 +33,7 @@ function Item({ name, username, email, city, phone, website, id, item }: any) {
     try {
       if (values.id > 1) {
         await deleteUser(values);
+        //delete from state
         dispatch(removeUser(values));
       } else {
         dispatch(removeUser(values));
@@ -69,22 +65,40 @@ function Item({ name, username, email, city, phone, website, id, item }: any) {
         ) : null}
       </div>
       <tr style={{ maxWidth: "100%", cursor: "pointer" }} key={id}>
-        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }} onClick={() => handleNavigate(item!)}>
+        <td
+          style={{ fontWeight: item?.isEdited ? "bold" : "normal" }}
+          onClick={() => handleNavigate(item!)}
+        >
           {name}
         </td>
-        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }} onClick={() => handleNavigate(item!)}>
+        <td
+          style={{ fontWeight: item?.isEdited ? "bold" : "normal" }}
+          onClick={() => handleNavigate(item!)}
+        >
           {username}
         </td>
-        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }} onClick={() => handleNavigate(item!)}>
+        <td
+          style={{ fontWeight: item?.isEdited ? "bold" : "normal" }}
+          onClick={() => handleNavigate(item!)}
+        >
           {email}
         </td>
-        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }} onClick={() => handleNavigate(item!)}>
+        <td
+          style={{ fontWeight: item?.isEdited ? "bold" : "normal" }}
+          onClick={() => handleNavigate(item!)}
+        >
           {city}
         </td>
-        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }} onClick={() => handleNavigate(item!)}>
+        <td
+          style={{ fontWeight: item?.isEdited ? "bold" : "normal" }}
+          onClick={() => handleNavigate(item!)}
+        >
           {phone}
         </td>
-        <td style={{ fontWeight: item?.isEdited ? "bold" : "normal" }} onClick={() => handleNavigate(item!)}>
+        <td
+          style={{ fontWeight: item?.isEdited ? "bold" : "normal" }}
+          onClick={() => handleNavigate(item!)}
+        >
           {website}
         </td>
         <td>
