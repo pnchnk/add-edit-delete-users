@@ -10,10 +10,11 @@ import { useGetUserQuery } from "../store/api/users";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBackward } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
+import { User } from "../types";
 
 function UserPage() {
   //current user for static render
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState<User>();
 
   //get params
   const params = useParams();
@@ -39,7 +40,6 @@ function UserPage() {
   useEffect(() => {
     findUser();
   }, [id]);
-
 
   const handlePreviousUser = () => {
     if (userIndex > 0) {
@@ -89,48 +89,13 @@ function UserPage() {
           }}
         >
           <>
-            <div className="small mb-1">
-              ID:{" "}
-              {
-                //@ts-ignore
-                currentUser?.id
-              }
-            </div>
-            <h1 className="display-5 fw-bolder">
-              {
-                //@ts-ignore
-                currentUser?.name
-              }
-            </h1>
+            <div className="small mb-1">ID: {currentUser?.id}</div>
+            <h1 className="display-5 fw-bolder">{currentUser?.name}</h1>
             <div className="fs-5 mb-5">
-              <p>
-                Username:{" "}
-                {
-                  //@ts-ignore
-                  currentUser?.username
-                }
-              </p>
-              <p>
-                Email:{" "}
-                {
-                  //@ts-ignore
-                  currentUser?.email
-                }
-              </p>
-              <p>
-                Phone:{" "}
-                {
-                  //@ts-ignore
-                  currentUser?.phone
-                }
-              </p>
-              <p>
-                Website:{" "}
-                {
-                  //@ts-ignore
-                  currentUser?.website
-                }
-              </p>
+              <p>Username: {currentUser?.username}</p>
+              <p>Email: {currentUser?.email}</p>
+              <p>Phone: {currentUser?.phone}</p>
+              <p>Website: {currentUser?.website}</p>
             </div>
           </>
         </div>
